@@ -17,6 +17,11 @@ func main() {
 	})
 
 	r.LoadHTMLGlob("view/*")
+	r.LoadHTMLFiles("./css/default.css")
+	r.LoadHTMLFiles("./js/jquery.js")
+	r.LoadHTMLFiles("./js/garden.js")
+	r.LoadHTMLFiles("./js/functions.js")
+
 	r.GET("/", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "index.html", gin.H{
 			"title": "hello Go",
