@@ -3,6 +3,7 @@ package main
 import (
 	// "fmt"
 	"github.com/gin-gonic/gin"
+	"net/http"
 )
 
 func main() {
@@ -12,6 +13,13 @@ func main() {
 	r.GET("/ping", func(c *gin.Context) {
 		c.JSON(200, gin.H{
 			"message": "测试成功",
+		})
+	})
+
+	r.LoadHTMLGlob("view/*")
+	r.GET("/", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "index.html", gin.H{
+			"title": "hello Go",
 		})
 	})
 
